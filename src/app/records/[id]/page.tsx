@@ -1,6 +1,5 @@
 import { getBrand } from "@/app/actions";
-import StepsForm from "../../components/Form";
-
+import Form from "../../create/components/Form";
 
 export default async function EditBrandPage({
     params,
@@ -21,7 +20,7 @@ export default async function EditBrandPage({
 
     return (
         <div>
-            <StepsForm
+            <Form
                 isEditing
                 brandData={brand}
             />

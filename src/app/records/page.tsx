@@ -1,7 +1,6 @@
-
+import { getBrands } from "../actions";
 
 import Table from "@/components/Table";
-import { getBrands } from "../actions/brands/get-brands.action";
 
 interface Props {
     searchParams: Promise<{ page: string | undefined }>
