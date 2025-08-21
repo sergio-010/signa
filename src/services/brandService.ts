@@ -81,7 +81,7 @@ export const brandService = {
   // Obtener una marca específica
   async getBrand(id: number): Promise<BrandResponse> {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/brands/${id}/`);
+      const response = await fetch(`${API_BASE_URL}/api/brands/${id}`);
       return await handleApiResponse<BrandResponse>(response);
     } catch (error) {
       return {
@@ -120,7 +120,7 @@ export const brandService = {
     brandData: BrandUpdateRequest
   ): Promise<BrandResponse> {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/brands/${id}/`, {
+      const response = await fetch(`${API_BASE_URL}/api/brands/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -142,7 +142,7 @@ export const brandService = {
   // Eliminar una marca
   async deleteBrand(id: number): Promise<DeleteResponse> {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/brands/${id}/`, {
+      const response = await fetch(`${API_BASE_URL}/api/brands/${id}`, {
         method: "DELETE",
       });
       return await handleApiResponse<DeleteResponse>(response);
