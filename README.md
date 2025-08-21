@@ -16,7 +16,7 @@ vercel login
 vercel --prod
 ```
 
-- **URL esperada**: `https://signa-prueba-tecnica.vercel.app`
+- **URL esperada**: `[https://signa-prueba-tecnica.vercel.app](https://signa-jhk5.vercel.app/)`
 
 **Backend (Railway):**
 
