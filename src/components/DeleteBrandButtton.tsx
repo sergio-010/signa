@@ -37,6 +37,8 @@ export const DeleteBrandButtton = ({ brandId, brandName }: Props) => {
 
             const displayName = brandName || 'la marca';
             toast.success(`Marca "${displayName}" eliminada correctamente`);
+            
+            // Actualizar la interfaz
             router.refresh();
         } catch (error) {
             const errMesg = error instanceof Error ? error.message : "Ups ocurrió un error al eliminar la marca";
