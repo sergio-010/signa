@@ -1,4 +1,4 @@
-import { getBrands } from "../actions";
+import { getBrands } from "../actions/brands/get-brands.action";
 
 import Table from "@/components/Table";
 

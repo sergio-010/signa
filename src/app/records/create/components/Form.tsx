@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Brand } from "@prisma/client";
+import { Brand } from "@/services/brandService";
 import toast from "react-hot-toast";
 
 import { brandSchema, type BrandFormData, INITIAL_VALUES } from '../helpers/createBrand.helper';
@@ -67,7 +67,7 @@ export default function StepsForm({ isEditing = false, brandData = null }: Props
                 });
 
                 if (!updatedBrand) {
-                    throw new Error(error);
+                    throw new Error(error || "Error al actualizar la marca");
                 }
 
                 // Toast específico para edición
@@ -81,7 +81,7 @@ export default function StepsForm({ isEditing = false, brandData = null }: Props
                 });
 
                 if (!newBrand) {
-                    throw new Error(error);
+                    throw new Error(error || "Error al crear la marca");
                 }
 
                 // Toast específico para creación

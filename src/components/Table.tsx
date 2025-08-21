@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Brand } from '@prisma/client';
+import { Brand } from '@/services/brandService';
 
 import { Pencil, Plus } from 'lucide-react';
 import { CreateBrandButton } from './CreateBrandButton';
