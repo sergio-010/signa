@@ -95,9 +95,6 @@ export const brandService = {
   // Crear una nueva marca
   async createBrand(brandData: BrandCreateRequest): Promise<BrandResponse> {
     try {
-      console.log('API_BASE_URL:', API_BASE_URL);
-      console.log('Sending brand data:', brandData);
-      
       const response = await fetch(`${API_BASE_URL}/api/brands/`, {
         method: "POST",
         headers: {
@@ -105,9 +102,6 @@ export const brandService = {
         },
         body: JSON.stringify(brandData),
       });
-      
-      console.log('Response status:', response.status);
-      console.log('Response ok:', response.ok);
       
       return await handleApiResponse<BrandResponse>(response);
     } catch (error) {
