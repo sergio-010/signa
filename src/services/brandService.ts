@@ -61,7 +61,7 @@ export const brandService = {
   ): Promise<BrandsResponse> {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/api/brands?page=${page}&per_page=${perPage}`
+        `${API_BASE_URL}/api/brands/?page=${page}&per_page=${perPage}`
       );
       return await handleApiResponse<BrandsResponse>(response);
     } catch (error) {
@@ -81,7 +81,7 @@ export const brandService = {
   // Obtener una marca específica
   async getBrand(id: number): Promise<BrandResponse> {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/brands/${id}`);
+      const response = await fetch(`${API_BASE_URL}/api/brands/${id}/`);
       return await handleApiResponse<BrandResponse>(response);
     } catch (error) {
       return {
@@ -95,15 +95,23 @@ export const brandService = {
   // Crear una nueva marca
   async createBrand(brandData: BrandCreateRequest): Promise<BrandResponse> {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/brands`, {
+      console.log('API_BASE_URL:', API_BASE_URL);
+      console.log('Sending brand data:', brandData);
+      
+      const response = await fetch(`${API_BASE_URL}/api/brands/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(brandData),
       });
+      
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+      
       return await handleApiResponse<BrandResponse>(response);
     } catch (error) {
+      console.error('Create brand error:', error);
       return {
         brand: null,
         error:
@@ -118,7 +126,7 @@ export const brandService = {
     brandData: BrandUpdateRequest
   ): Promise<BrandResponse> {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/brands/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/brands/${id}/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -140,7 +148,7 @@ export const brandService = {
   // Eliminar una marca
   async deleteBrand(id: number): Promise<DeleteResponse> {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/brands/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/brands/${id}/`, {
         method: "DELETE",
       });
       return await handleApiResponse<DeleteResponse>(response);

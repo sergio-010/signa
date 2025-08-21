@@ -145,7 +145,7 @@ function SideBar() {
                         `}
                     >
                         <div className="text-xs text-slate-500 text-center">
-                            <p>© 2024 Sistema de Marcas</p>
+                            <p>© 2025 Sistema de Marcas</p>
                             <p>Versión 1.0</p>
                         </div>
                     </div>

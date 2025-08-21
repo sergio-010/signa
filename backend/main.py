@@ -15,7 +15,12 @@ def create_app():
     app = Flask(__name__)
     
     # Configuración CORS para permitir requests desde el frontend
-    CORS(app, origins=["http://localhost:3000", "http://127.0.0.1:3000"])
+    CORS(app, origins=[
+        "http://localhost:3000", 
+        "http://127.0.0.1:3000",
+        "https://signa-prueba-tecnica-4222961fw-sergio-andres-picons-projects.vercel.app",
+        "https://*.vercel.app"
+    ])
     
     # Inicializar la base de datos
     init_db(app)
