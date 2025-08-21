@@ -16,7 +16,7 @@ vercel login
 vercel --prod
 ```
 
-- **URL esperada**: `(https://signa-jhk5.vercel.app/)`
+- **URL esperada**: `https://signa-jhk5.vercel.app/`
 
 **Backend (Railway):**
 
