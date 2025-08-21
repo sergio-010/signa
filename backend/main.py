@@ -18,8 +18,9 @@ def create_app():
     CORS(app, origins=[
         "http://localhost:3000", 
         "http://127.0.0.1:3000",
-        "https://signa-prueba-tecnica-4222961fw-sergio-andres-picons-projects.vercel.app",
-        "https://*.vercel.app"
+        "https://signa-jhk5.vercel.app",
+        "https://*.vercel.app",
+        "https://heartfelt-insight-production-3a55.up.railway.app"
     ])
     
     # Inicializar la base de datos
