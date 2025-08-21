@@ -11,6 +11,7 @@ from app.routers.brands import brands_bp
 load_dotenv()
 
 def create_app():
+
     """Factory function para crear la aplicación Flask"""
     app = Flask(__name__)
     
