@@ -9,21 +9,26 @@ Este es un monorepo que contiene una aplicación completa para la gestión de ma
 **🚀 Para Despliegue en Producción:**
 
 **Frontend (Vercel):**
+
 ```bash
 npm install -g vercel
 vercel login
 vercel --prod
 ```
+
 - **URL esperada**: `https://signa-prueba-tecnica.vercel.app`
 
 **Backend (Railway):**
+
 1. Ir a [Railway.app](https://railway.app)
 2. Conectar repositorio GitHub
 3. Crear proyecto desde `/backend`
 4. Configurar variables de entorno
+
 - **URL esperada**: `https://signa-backend.up.railway.app`
 
 **💻 Desarrollo Local:**
+
 - **Frontend**: `http://localhost:3000`
 - **Backend API**: `http://localhost:5000`
 
@@ -113,11 +118,13 @@ signa/
 ### **Frontend - Vercel**
 
 1. **Instalar Vercel CLI:**
+
 ```bash
 npm install -g vercel
 ```
 
 2. **Desplegar:**
+
 ```bash
 # Desde la raíz del proyecto
 vercel
@@ -133,6 +140,7 @@ vercel
 1. **Ir a Railway.app** y conectar tu repositorio GitHub
 2. **Crear nuevo proyecto** desde el directorio `/backend`
 3. **Configurar variables de entorno:**
+
    - `DATABASE_URL`: Tu URL de PostgreSQL
    - `FLASK_ENV`: `production`
    - `PORT`: `5000` (automático)
@@ -142,6 +150,7 @@ vercel
 ### **Actualizar URLs de Producción**
 
 Una vez desplegado, actualiza las URLs en:
+
 - `NEXT_PUBLIC_API_URL` en Vercel
 - CORS origins en `backend/main.py`
 - README.md con los links reales

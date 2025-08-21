@@ -169,10 +169,10 @@ export default function StepsForm({ isEditing = false, brandData = null }: Props
                                             <div key={step} className="flex items-center">
                                                 <div
                                                     className={`flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border-2 transition-all duration-300 ${currentStep === step
-                                                            ? "bg-slate-700 border-slate-700 text-white"
-                                                            : currentStep > step
-                                                                ? "bg-green-500 border-green-500 text-white"
-                                                                : "border-gray-300 text-gray-300"
+                                                        ? "bg-slate-700 border-slate-700 text-white"
+                                                        : currentStep > step
+                                                            ? "bg-green-500 border-green-500 text-white"
+                                                            : "border-gray-300 text-gray-300"
                                                         }`}
                                                 >
                                                     {currentStep > step ? (
@@ -299,8 +299,8 @@ export default function StepsForm({ isEditing = false, brandData = null }: Props
                                                     <span className="font-medium text-slate-600 min-w-32">Estado:</span>
                                                     <span
                                                         className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${form.watch('status') === "activo"
-                                                                ? "bg-green-100 text-green-800"
-                                                                : "bg-red-100 text-red-800"
+                                                            ? "bg-green-100 text-green-800"
+                                                            : "bg-red-100 text-red-800"
                                                             }`}
                                                     >
                                                         {form.watch('status') === "activo" ? "Activo" : "Inactivo"}

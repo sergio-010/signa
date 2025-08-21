@@ -102,10 +102,10 @@ export const brandService = {
         },
         body: JSON.stringify(brandData),
       });
-      
+
       return await handleApiResponse<BrandResponse>(response);
     } catch (error) {
-      console.error('Create brand error:', error);
+      console.error("Create brand error:", error);
       return {
         brand: null,
         error:

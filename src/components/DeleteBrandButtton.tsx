@@ -37,7 +37,7 @@ export const DeleteBrandButtton = ({ brandId, brandName }: Props) => {
 
             const displayName = brandName || 'la marca';
             toast.success(`Marca "${displayName}" eliminada correctamente`);
-            
+
             // Actualizar la interfaz
             router.refresh();
         } catch (error) {

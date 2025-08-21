@@ -6,13 +6,13 @@ import { brandService } from "@/services/brandService";
 export const deleteBrand = async (id: number) => {
   try {
     const result = await brandService.deleteBrand(id);
-    
+
     if (result.success) {
       // Revalidar las rutas para que se actualicen los datos
       revalidatePath("/");
       revalidatePath("/records");
     }
-    
+
     return result;
   } catch (error) {
     return {
