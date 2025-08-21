@@ -4,8 +4,8 @@ echo "🔍 Verificando estado del sistema completo..."
 echo ""
 
 # URLs
-BACKEND_URL="https://signa-production.up.railway.app"
-FRONTEND_URL="https://signa-prueba-tecnica-4fslcglx3-sergio-andres-picons-projects.vercel.app"
+BACKEND_URL="https://heartfelt-insight-production-3a55.up.railway.app"
+FRONTEND_URL="https://signa-prueba-tecnica.vercel.app"
 
 echo "🔧 Verificando Backend (Railway)..."
 echo "   URL: $BACKEND_URL"

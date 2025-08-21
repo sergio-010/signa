@@ -3,12 +3,12 @@
 ## ✅ URLs de Producción
 
 ### Frontend (Next.js)
-- **URL**: https://signa-prueba-tecnica-4fslcglx3-sergio-andres-picons-projects.vercel.app
+- **URL**: https://signa-prueba-tecnica.vercel.app
 - **Plataforma**: Vercel
 - **Estado**: ✅ Desplegado y funcionando
 
 ### Backend (Flask API)
-- **URL**: https://signa-production.up.railway.app
+- **URL**: https://heartfelt-insight-production-3a55.up.railway.app
 - **Plataforma**: Railway
 - **Estado**: ✅ Desplegado y funcionando
 
