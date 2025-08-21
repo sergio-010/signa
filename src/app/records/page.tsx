@@ -13,12 +13,10 @@ export default async function PageRecords({ searchParams }: Props) {
     const { brands, totalPages } = await getBrands({ take: 6, skip: currentPage });
 
     return (
-        <>
-            <Table
-                brands={brands}
-                page={currentPage}
-                totalPages={totalPages}
-            />
-        </>
+        <Table
+            brands={brands}
+            page={currentPage}
+            totalPages={totalPages}
+        />
     );
 }

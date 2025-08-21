@@ -1,17 +1,15 @@
 "use server";
 
-import prisma from "@/lib/prisma";
+import { brandService } from "@/services/brandService";
 
 export const deleteBrand = async (id: number) => {
   try {
-    await prisma.brand.delete({
-      where: { id },
-    });
-
-    return { success: true, error: null };
+    const result = await brandService.deleteBrand(id);
+    return result;
   } catch (error) {
-    const errMsg =
-      error instanceof Error ? error.message : "Ups, ocurrió un error";
-    return { success: false, error: errMsg };
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Ups, ocurrió un error",
+    };
   }
 };

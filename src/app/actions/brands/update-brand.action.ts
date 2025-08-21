@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/lib/prisma";
+import { brandService } from "@/services/brandService";
 
 type TEditBrand = {
   brandName: string;
@@ -10,15 +10,12 @@ type TEditBrand = {
 
 export const updateBrand = async (id: number, brand: TEditBrand) => {
   try {
-    const res = await prisma.brand.update({
-      where: { id },
-      data: brand,
-    });
-
-    return { brand: res, error: null };
+    const result = await brandService.updateBrand(id, brand);
+    return result;
   } catch (error) {
-    const errMsg =
-      error instanceof Error ? error.message : "Ups ocurrio un error";
-    return { brand: null, error: errMsg };
+    return {
+      brand: null,
+      error: error instanceof Error ? error.message : "Ups ocurrió un error",
+    };
   }
 };

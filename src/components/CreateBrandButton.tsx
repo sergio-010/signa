@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { Plus } from 'lucide-react';
 
 import { Button } from './ui/button';
 
@@ -9,10 +10,11 @@ export const CreateBrandButton = () => {
 
     return (
         <Button
-            className="mt-4"
+            className="bg-slate-700 hover:bg-slate-800 flex items-center gap-2"
             onClick={() => router.push('/records/create')}
         >
-            Crear Registro
+            <Plus className="w-4 h-4" />
+            Nueva Marca
         </Button>
     )
 }

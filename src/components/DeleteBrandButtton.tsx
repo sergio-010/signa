@@ -6,9 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import toast from 'react-hot-toast';
 
-
-
-import { Trash } from 'lucide-react';
+import { Trash2, AlertTriangle } from 'lucide-react';
 
 import { Modal } from './modal/Modal';
 import { Button } from './ui/button';
@@ -16,9 +14,10 @@ import { deleteBrand } from '@/app/actions/brands/delete-brand.action';
 
 interface Props {
     brandId?: number;
+    brandName?: string;
 }
 
-export const DeleteBrandButtton = ({ brandId }: Props) => {
+export const DeleteBrandButtton = ({ brandId, brandName }: Props) => {
     const router = useRouter();
 
     const [confirmModal, setConfirmModal] = useState(false);
@@ -29,16 +28,18 @@ export const DeleteBrandButtton = ({ brandId }: Props) => {
 
         try {
             setLoading(true);
+
             const result = await deleteBrand(brandId);
 
             if (!result.success) {
-                throw new Error(result.error || "Ups ocurrio un error al eliminar la marca");
+                throw new Error(result.error || "Ups ocurrió un error al eliminar la marca");
             }
 
-            toast.success('Marca eliminada con exito');
+            const displayName = brandName || 'la marca';
+            toast.success(`Marca "${displayName}" eliminada correctamente`);
             router.refresh();
         } catch (error) {
-            const errMesg = error instanceof Error ? error.message : "Ups ocurrio un error al eliminar la marca";
+            const errMesg = error instanceof Error ? error.message : "Ups ocurrió un error al eliminar la marca";
             toast.error(errMesg);
         } finally {
             setLoading(false);
@@ -48,34 +49,56 @@ export const DeleteBrandButtton = ({ brandId }: Props) => {
 
     return (
         <>
-            <button
+            <Button
+                variant="outline"
+                size="sm"
                 onClick={() => setConfirmModal(true)}
-                className="font-medium text-red-600 dark:text-red-500 hover:animate-bounce"
+                className="text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200 hover:border-red-300"
             >
-                <Trash size={20} />
-            </button>
+                <Trash2 className="w-3 h-3" />
+                <span className="hidden sm:inline ml-1">Eliminar</span>
+            </Button>
 
             <Modal
                 isOpen={confirmModal}
                 showCloseButton={false}
                 onClose={() => setConfirmModal(false)}
             >
-                <div className='flex flex-col gap-4'>
-                    <h4 className='text-center font-semibold'>
-                        ¿Estas seguro de eliminar la marca?
-                    </h4>
+                <div className='flex flex-col gap-6 p-2'>
+                    <div className="text-center">
+                        <div className="mx-auto flex items-center justify-center w-12 h-12 rounded-full bg-red-100 mb-4">
+                            <AlertTriangle className="w-6 h-6 text-red-600" />
+                        </div>
+                        <div className='text-lg font-semibold text-slate-800 mb-2'>
+                            Confirmar Eliminación
+                        </div>
+                        <p className="text-sm text-slate-600">
+                            ¿Estás seguro de que deseas eliminar esta marca? Esta acción no se puede deshacer.
+                        </p>
+                    </div>
 
-                    <div className='flex justify-center gap-4'>
+                    <div className='flex flex-col sm:flex-row justify-center gap-3'>
                         <Button
                             onClick={() => handleDelete()}
-                            className="text-white font-semibold px-3 py-2 rounded-md bg-red-600 hover:bg-red-500"
+                            disabled={loading}
+                            className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded-md disabled:opacity-50"
                         >
-                            {loading ? 'Eliminando...' : 'Eliminar'}
+                            {loading ? (
+                                <>
+                                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                                    Eliminando...
+                                </>
+                            ) : (
+                                <>
+                                    <Trash2 className="w-4 h-4 mr-2" />
+                                    Eliminar
+                                </>
+                            )}
                         </Button>
                         <Button
                             variant="outline"
                             onClick={() => setConfirmModal(false)}
-                            className="font-semibold px-3 py-2 rounded-md"
+                            className="font-semibold px-6 py-2 rounded-md"
                         >
                             Cancelar
                         </Button>

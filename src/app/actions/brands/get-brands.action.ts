@@ -1,38 +1,38 @@
-import prisma from "@/lib/prisma";
+"use server";
+
+import { brandService, BrandsResponse } from "@/services/brandService";
 
 interface GetBrandsProps {
-  take?: number | null;
-  skip?: number | null;
+  take?: number;
+  skip?: number;
 }
 
-export const getBrands = async ({ take = 6, skip }: GetBrandsProps) => {
+export const getBrands = async ({
+  take = 6,
+  skip = 1,
+}: GetBrandsProps): Promise<BrandsResponse> => {
   try {
-    const currentPage = skip ? (skip - 1) * Number(take) : 1;
-
-    const [brands, count] = await prisma.$transaction([
-      prisma.brand.findMany({
-        take: Number(take),
-        skip: currentPage,
-      }),
-      prisma.brand.count(),
-    ]);
-
-    return { brands, totalPages: Math.ceil(count / 6), error: null };
+    const result = await brandService.getBrands(skip, take);
+    return result;
   } catch (error) {
-    const errMsg =
-      error instanceof Error ? error.message : "Ups ocurrio un error";
-    return { brands: [], totalPages: 1, error: errMsg };
+    return {
+      brands: [],
+      totalPages: 1,
+      currentPage: 1,
+      total: 0,
+      error: error instanceof Error ? error.message : "Ups ocurrió un error",
+    };
   }
 };
 
 export const getBrand = async (id: number) => {
   try {
-    const res = await prisma.brand.findUnique({ where: { id } });
-
-    return { brand: res, error: null };
+    const result = await brandService.getBrand(id);
+    return result;
   } catch (error) {
-    const errMsg =
-      error instanceof Error ? error.message : "Ups ocurrio un error";
-    return { brand: null, error: errMsg };
+    return {
+      brand: null,
+      error: error instanceof Error ? error.message : "Ups ocurrió un error",
+    };
   }
 };

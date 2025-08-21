@@ -2,6 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .brand-avatar {
+    @apply w-12 h-12 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-lg;
+    background: linear-gradient(135deg, #475569 0%, #1e293b 100%);
+  }
+  
+  .status-indicator {
+    @apply absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white;
+  }
+  
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border-0 shadow-lg;
+  }
+  
+  .page-gradient {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  }
+  
+  .smooth-transition {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Optimizaciones de rendimiento */
+  .loading-spinner {
+    @apply border-2 border-slate-200 border-t-slate-600 rounded-full animate-spin;
+  }
+  
+  .text-optimized {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .container-optimized {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .focus-optimized {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+  
+  /* Optimizaciones de accesibilidad */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* Mejorar contraste y legibilidad */
+  .high-contrast {
+    @apply text-slate-900 bg-white border-slate-300;
+  }
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }

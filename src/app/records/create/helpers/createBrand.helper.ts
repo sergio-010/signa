@@ -1,17 +1,17 @@
-import * as Yup from "yup";
+import { z } from "zod";
 
-export const INITIAL_VALUES = {
+export const INITIAL_VALUES: BrandFormData = {
   brand: "",
   trademarkOwner: "",
-  status: "",
+  status: "activo",
 };
 
-export const validationSchema = Yup.object().shape({
-  brand: Yup.string().required("El nombre de la marca es obligatorio"),
-  trademarkOwner: Yup.string().required(
-    "El titular de la marca es obligatorio"
-  ),
-  status: Yup.string()
-    .oneOf(["activo", "inactivo"], "Selecciona un estado válido")
-    .required("El estado es obligatorio"),
+export const brandSchema = z.object({
+  brand: z.string().min(1, "El nombre de la marca es obligatorio"),
+  trademarkOwner: z.string().min(1, "El titular de la marca es obligatorio"),
+  status: z.enum(["activo", "inactivo"], {
+    message: "Selecciona un estado válido",
+  }),
 });
+
+export type BrandFormData = z.infer<typeof brandSchema>;

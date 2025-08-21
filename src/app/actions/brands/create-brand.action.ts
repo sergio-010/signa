@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/lib/prisma";
+import { brandService } from "@/services/brandService";
 
 type TCreateBrand = {
   brandName: string;
@@ -10,14 +10,12 @@ type TCreateBrand = {
 
 export const createBrand = async (brand: TCreateBrand) => {
   try {
-    const res = await prisma.brand.create({
-      data: brand,
-    });
-
-    return { brand: res, error: null };
+    const result = await brandService.createBrand(brand);
+    return result;
   } catch (error) {
-    const errMsg =
-      error instanceof Error ? error.message : "Ups ocurrio un error";
-    return { brand: null, error: errMsg };
+    return {
+      brand: null,
+      error: error instanceof Error ? error.message : "Ups ocurrió un error",
+    };
   }
 };
